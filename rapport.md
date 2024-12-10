@@ -185,7 +185,7 @@ Il attend que les données soient chargées et affiche différents éléments en
 C'est une manière simple de gérer l'affichage de contenu qui prend du temps à charger.
     
   - **Formulaire pour ajouter un utilisateur** :
-    Comprend trois champs : nom, email, et téléphone, avec validation pour s'assurer que les données sont renseignées.
+    Comprend trois champs : nom, email, et téléphone, avec validation pour s'assurer que les données sont bien renseignées.
 
 ---
 
