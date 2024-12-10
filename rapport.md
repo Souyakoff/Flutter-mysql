@@ -14,7 +14,7 @@
   - Endpoint GET : Récupère la liste des utilisateurs avec leurs informations (nom, email, téléphone).
   - Endpoint POST : Permet d’ajouter un utilisateur (nom, email, téléphone).
 
-  **Code du backend :**
+**Code du backend :**
 
 ### **Fichier `server.js`**
 
@@ -44,7 +44,7 @@ Cela permet à n'importe quelle origine de communiquer avec le backend.
 
 ---
 
-#### **3. Connexion à la base de données MySQL**
+#### **Connexion à la base de données MySQL**
 ```javascript
 const connection = mysql.createConnection({
   host: '127.0.0.1',  // Adresse de la base de données (locale ou distante)
@@ -60,13 +60,13 @@ connection.connect(err => {
 ```
 - **Connexion à la base MySQL** : La connexion est établie à la base de données `gestion_utilisateurs` avec les paramètres spécifiés. Si la connexion échoue, une erreur est lancée. Si elle réussit, un message de succès est affiché dans la console.
 
-#### **4. Middleware pour le traitement des requêtes JSON**
+#### **Middleware pour le traitement des requêtes JSON**
 ```javascript
 app.use(express.json()); // Pour interpréter le corps des requêtes en JSON
 ```
 - Cette ligne permet à Express de parser les données JSON envoyées dans les requêtes HTTP (par exemple, lors de l'envoi d'un utilisateur à ajouter via un `POST`).
 
-#### **5. Endpoint GET pour récupérer les utilisateurs**
+#### **Endpoint GET pour récupérer les utilisateurs**
 ```javascript
 app.get('/api/utilisateurs', (req, res) => {
   connection.query('SELECT * FROM users', (err, results) => {
@@ -78,7 +78,7 @@ app.get('/api/utilisateurs', (req, res) => {
 - **`GET /api/utilisateurs`** : Cette route récupère tous les utilisateurs de la base de données en exécutant une requête SQL `SELECT * FROM users`. 
 - Les résultats sont renvoyés sous forme de JSON au client (dans ce cas, l'application Flutter).
 
-#### **6. Endpoint POST pour ajouter un utilisateur**
+#### **Endpoint POST pour ajouter un utilisateur**
 ```javascript
 app.post('/api/utilisateurs', (req, res) => {
   const { nom, email, telephone } = req.body; // Récupère les données envoyées dans le corps de la requête
@@ -105,7 +105,7 @@ app.post('/api/utilisateurs', (req, res) => {
   - Si les données sont valides, elles sont insérées dans la base de données avec une requête `INSERT INTO`.
   - Une réponse avec le statut 201 et les données de l'utilisateur ajouté (y compris l'ID généré par MySQL) est renvoyée.
 
-#### **7. Démarrage du serveur**
+#### **Démarrage du serveur**
 ```javascript
 app.listen(port, () => {
   console.log(`Serveur backend opérationnel : http://172.16.192.254:${port}`);
