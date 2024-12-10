@@ -35,6 +35,13 @@ const port = 3000; // Port d'écoute du serveur
 app.use(cors());  // Activer CORS pour toutes les routes
 ```
 - Cette ligne permet à l'API de répondre aux requêtes provenant de domaines différents de celui du backend (par exemple, Flutter, hébergé sur une autre machine).
+  
+### Définition
+**CORS (Cross-Origin Resource Sharing)** est un mécanisme de sécurité qui permet de contrôler les requêtes HTTP provenant de domaines différents de celui du serveur. Par défaut, les navigateurs bloquent ces requêtes pour des raisons de sécurité.
+
+Dans votre serveur Node.js, **CORS** est utilisé pour autoriser l'accès à votre API depuis d'autres domaines, comme l'application Flutter.
+Cela permet à n'importe quelle origine (par exemple, votre app Flutter) de communiquer avec votre backend. 
+
 
 #### **3. Connexion à la base de données MySQL**
 ```javascript
