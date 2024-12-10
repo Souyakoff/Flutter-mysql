@@ -133,7 +133,7 @@ Voici une version améliorée et plus détaillée du schéma d'architecture pour
 
 #### **Résultats**
 - **Affichage dynamique des utilisateurs** :
-![Alt text](image.png)
+![Alt text]()
   - Liste des utilisateurs récupérée depuis le backend.
   - Mise à jour de la liste après l’ajout d’un nouvel utilisateur.
 - **Ajout d’un utilisateur** :
