@@ -178,11 +178,11 @@ app.listen(port, () => {
   - **Affichage des utilisateurs** :
     Utilisation de `FutureBuilder` pour récupérer et afficher la liste des utilisateurs sous forme de Liste.
     
-**`FutureBuilder`** est un widget Flutter utilisé pour gérer les opérations asynchrones. 
+**`FutureBuilder`** est un widget Flutter qui permet d'afficher des données récupérées de manière asynchrone, comme depuis une API. 
 
-Il prend un **`Future`** et construit l'interface utilisateur en fonction de l'état de       ce `Future`. 
+Il attend que les données soient chargées et affiche différents éléments en fonction de l'état de la récupération des données : un chargement, un message d'erreur, ou les données elles-mêmes une fois récupérées. 
 
-Selon l'état (en attente, terminé, ou erreur), il affiche différentes parties de l'interface, comme un indicateur de chargement pendant l'attente, les données   une     fois disponibles, ou un message d'erreur si la requête échoue. Cela permet de rendre l'interface dynamique et réactive aux résultats des opérations asynchrones.
+C'est une manière simple de gérer l'affichage de contenu qui prend du temps à charger.
     
   - **Formulaire pour ajouter un utilisateur** :
     Comprend trois champs : nom, email, et téléphone, avec validation pour s'assurer que les données sont renseignées.
