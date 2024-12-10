@@ -174,8 +174,6 @@ app.listen(port, () => {
 
 ---
 
-Voici une version améliorée et plus détaillée du schéma d'architecture pour mieux représenter les interactions entre les différentes composantes de l'application :
-
 #### **Schéma d’Architecture**
 ```plaintext
 +----------------------------+              +-----------------------+
