@@ -39,8 +39,8 @@ app.use(cors());  // Activer CORS pour toutes les routes
 ### **Définition**
 **CORS (Cross-Origin Resource Sharing)** est un mécanisme de sécurité qui permet de contrôler les requêtes HTTP provenant de domaines différents de celui du serveur. Par défaut, les navigateurs bloquent ces requêtes pour des raisons de sécurité.
 
-Dans votre serveur Node.js, **CORS** est utilisé pour autoriser l'accès à votre API depuis d'autres domaines, comme l'application Flutter.
-Cela permet à n'importe quelle origine (par exemple, votre app Flutter) de communiquer avec votre backend. 
+Dans cette situation, **CORS** est utilisé pour autoriser l'accès à l'API depuis d'autres domaines/machines, comme l'application Flutter.
+Cela permet à n'importe quelle origine de communiquer avec le backend. 
 
 ---
 
