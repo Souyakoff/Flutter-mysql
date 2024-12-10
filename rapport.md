@@ -37,7 +37,7 @@ app.use(cors());  // Activer CORS pour toutes les routes
 - Cette ligne permet à l'API de répondre aux requêtes provenant de domaines différents de celui du backend (par exemple, Flutter, hébergé sur une autre machine).
   
 ### **Définition**
-**CORS (Cross-Origin Resource Sharing)** est un mécanisme de sécurité qui permet de contrôler les requêtes HTTP provenant de domaines différents de celui du serveur. Par défaut, les navigateurs bloquent ces requêtes pour des raisons de sécurité.
+**CORS (Cross-Origin Resource Sharing)** est un mécanisme de sécurité qui permet de contrôler les requêtes HTTP provenant de domaines/machines différents de celui du serveur. Par défaut, les navigateurs bloquent ces requêtes pour des raisons de sécurité.
 
 Dans cette situation, **CORS** est utilisé pour autoriser l'accès à l'API depuis d'autres domaines/machines, comme l'application Flutter.
 Cela permet à n'importe quelle origine de communiquer avec le backend. 
@@ -47,7 +47,7 @@ Cela permet à n'importe quelle origine de communiquer avec le backend.
 #### **Connexion à la base de données MySQL**
 ```javascript
 const connection = mysql.createConnection({
-  host: '127.0.0.1',  // Adresse de la base de données (locale ou distante)
+  host: '127.0.0.1',  // Adresse de la base de données
   user: 'root',        // Nom d'utilisateur MySQL
   password: '',        // Mot de passe
   database: 'gestion_utilisateurs'  // Nom de la base de données
@@ -76,7 +76,7 @@ app.get('/api/utilisateurs', (req, res) => {
 });
 ```
 - **`GET /api/utilisateurs`** : Cette route récupère tous les utilisateurs de la base de données en exécutant une requête SQL `SELECT * FROM users`. 
-- Les résultats sont renvoyés sous forme de JSON au client (dans ce cas, l'application Flutter).
+- Les résultats sont renvoyés sous forme de JSON(dans ce cas, l'application Flutter).
 
 #### **Endpoint POST pour ajouter un utilisateur**
 ```javascript
@@ -100,7 +100,7 @@ app.post('/api/utilisateurs', (req, res) => {
 });
 ```
 - **`POST /api/utilisateurs`** :  Cette route permet d'ajouter un nouvel utilisateur à la base de données.
-  - Les données envoyées par le client (nom, email, téléphone) sont extraites du corps de la requête.
+  - Les données envoyées par le client (nom, email, téléphone) sont extraites de la requête.
   - Si un des champs est manquant, une réponse d'erreur 400 est renvoyée.
   - Si les données sont valides, elles sont insérées dans la base de données avec une requête `INSERT INTO`.
   - Une réponse avec le statut 201 et les données de l'utilisateur ajouté (y compris l'ID généré par MySQL) est renvoyée.
@@ -180,9 +180,9 @@ app.listen(port, () => {
     
 **`FutureBuilder`** est un widget Flutter qui permet d'afficher des données récupérées de manière asynchrone, comme depuis une API. 
 
-Il attend que les données soient chargées et affiche différents éléments en fonction de l'état de la récupération des données : un chargement, un message d'erreur, ou les données elles-mêmes une fois récupérées. 
+Il attend que les données soient chargées et affiche différents éléments en fonction de l'état de la récupération des données : un chargement, un message d'erreur, ou les données une fois récupérées. 
 
-C'est une manière simple de gérer l'affichage de contenu qui prend du temps à charger.
+C'est une manière plutot simple de gérer l'affichage de contenu qui prend du temps à charger.
     
   - **Formulaire pour ajouter un utilisateur** :
     Comprend trois champs : nom, email, et téléphone, avec validation pour s'assurer que les données sont bien renseignées.
@@ -191,22 +191,31 @@ C'est une manière simple de gérer l'affichage de contenu qui prend du temps à
 
 #### **Schéma d’Architecture**
 ```plaintext
-+----------------------------+              +-----------------------+
-|                            |   HTTP API   |                       |
-|        Flutter             | <----------> |      Node.js          |
-|  (Interface Utilisateur)   |              | (Backend et API REST) |
-|                            |              |                       |
-+----------------------------+              +-----------------------+
-             |                                    |
-             |                                    | Connexion à la base
-             |                                    | 
-             v                                    v
-+----------------------------+              +-----------------------+
-|                            |              |                       |
-|       MySQL                | <----------> |       Backend         |
-|  (Base de Données)         |              |                       |
-|                            |              |                       |
-+----------------------------+              +-----------------------+
++----------------------------+  
+|                            |  
+|        Flutter             |  
+|  (Interface Utilisateur)   |  
+|                            |  
++----------------------------+  
+             | 
+             | Connexion HTTP
+             v
++----------------------------+    
+|                            |  
+|      server.js               | 
+|  (Backend et API)          |           
+|                            |              
++----------------------------+              
+           |                                    
+           | Connexion à la base
+           v
++-----------------------+
+|                       |
+|  gestion_utilisateurs |
+|   (Base de Données)   |
+|         MySql         |
++-----------------------+
+
 ```
 ---
 
@@ -238,4 +247,8 @@ C'est une manière simple de gérer l'affichage de contenu qui prend du temps à
 
 ## **Conclusion**
 
-Ce projet a permis de développer une application mobile Flutter intégrée à un backend Node.js, avec une base de données MySQL distante. L'application permet de gérer les utilisateurs en les récupérant et en les ajoutant via des API REST. L'application est facilement extensible pour inclure des fonctionnalités supplémentaires telles que la modification, la suppression d'utilisateurs, ou l'ajout de nouvelles fonctionnalités. Ce projet démontre l'intégration entre une application mobile Flutter, un backend Node.js, et une base de données distante, tout en assurant une communication sécurisée via CORS et des requêtes HTTP.
+Ce projet a permis de développer une application mobile Flutter intégrée à un backend Node.js, avec une base de données MySQL distante. 
+
+L'application permet de gérer les utilisateurs en les récupérant et en les ajoutant via des API REST. L'application est assez modifiable pour rajouter des fonctionnalités supplémentaires comme la modification, la suppression d'utilisateurs, ou l'ajout de nouvelles fonctionnalités. 
+
+Ce projet montre l'intégration entre une application mobile Flutter, un backend Node.js, et une base de données distante, tout en assurant une communication sécurisée avec CORS et des requêtes HTTP.
