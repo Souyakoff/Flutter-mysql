@@ -15,31 +15,97 @@
   - Endpoint POST : Permet d’ajouter un utilisateur (nom, email, téléphone).
 
   **Code du backend :**
-  ```javascript
-  // Endpoint GET pour récupérer les utilisateurs
-  app.get('/api/utilisateurs', (req, res) => {
-      connection.query('SELECT * FROM users', (err, results) => {
-          if (err) throw err;
-          res.json(results); // Renvoie les résultats de la base.
-      });
-  });
 
-  // Endpoint POST pour ajouter un utilisateur
-  app.post('/api/utilisateurs', (req, res) => {
-      const { nom, email, telephone } = req.body;
-      if (!nom || !email || !telephone) {
-          return res.status(400).json({ message: 'Nom, email et téléphone sont requis.' });
-      }
-      connection.query(
-          'INSERT INTO users (nom, email, telephone) VALUES (?, ?, ?)',
-          [nom, email, telephone],
-          (err, result) => {
-              if (err) throw err;
-              res.status(201).json({ id: result.insertId, nom, email, telephone });
-          }
-      );
+### **Fichier `server.js`**
+
+#### **1. Importation des modules nécessaires**
+```javascript
+const express = require('express');
+const mysql = require('mysql');
+const app = express();
+const cors = require('cors');  // Importation du package CORS
+const port = 3000; // Port d'écoute du serveur
+```
+- **`express`** : Framework Node.js pour créer des applications web et des API.
+- **`mysql`** : Module pour se connecter à une base de données MySQL.
+- **`cors`** : Middleware pour permettre les requêtes HTTP cross-origin (utilisé pour éviter les erreurs CORS lorsqu'on communique entre le frontend Flutter et le backend Node.js).
+
+#### **2. Configuration de CORS**
+```javascript
+app.use(cors());  // Activer CORS pour toutes les routes
+```
+- Cette ligne permet à l'API de répondre aux requêtes provenant de domaines différents de celui du backend (par exemple, Flutter, hébergé sur un autre domaine).
+
+#### **3. Connexion à la base de données MySQL**
+```javascript
+const connection = mysql.createConnection({
+  host: '127.0.0.1',  // Adresse de la base de données (locale ou distante)
+  user: 'root',        // Nom d'utilisateur MySQL
+  password: '',        // Mot de passe
+  database: 'gestion_utilisateurs'  // Nom de la base de données
+});
+
+connection.connect(err => {
+  if (err) throw err;
+  console.log('Connecté à la base MySQL');
+});
+```
+- **Connexion à la base MySQL** : La connexion est établie à la base de données `gestion_utilisateurs` avec les paramètres spécifiés. Si la connexion échoue, une erreur est lancée. Si elle réussit, un message de succès est affiché dans la console.
+
+#### **4. Middleware pour le traitement des requêtes JSON**
+```javascript
+app.use(express.json()); // Pour interpréter le corps des requêtes en JSON
+```
+- Cette ligne permet à Express de parser les données JSON envoyées dans les requêtes HTTP (par exemple, lors de l'envoi d'un utilisateur à ajouter via un `POST`).
+
+#### **5. Endpoint GET pour récupérer les utilisateurs**
+```javascript
+app.get('/api/utilisateurs', (req, res) => {
+  connection.query('SELECT * FROM users', (err, results) => {
+    if (err) throw err;
+    res.json(results); // Renvoie les résultats sous forme de JSON
   });
-  ```
+});
+```
+- **`GET /api/utilisateurs`** : Ce point d'API récupère tous les utilisateurs de la base de données en exécutant une requête SQL `SELECT * FROM users`. 
+- Les résultats sont renvoyés sous forme de JSON au client (dans ce cas, l'application Flutter).
+
+#### **6. Endpoint POST pour ajouter un utilisateur**
+```javascript
+app.post('/api/utilisateurs', (req, res) => {
+  const { nom, email, telephone } = req.body; // Récupère les données envoyées dans le corps de la requête
+
+  // Vérifie si tous les champs nécessaires sont présents
+  if (!nom || !email || !telephone) {
+    return res.status(400).json({ message: 'Nom, email et téléphone sont requis.' });
+  }
+
+  // Insertion de l'utilisateur dans la base de données
+  connection.query(
+    'INSERT INTO users (nom, email, telephone) VALUES (?, ?, ?)',
+    [nom, email, telephone], // Les valeurs sont injectées dans la requête SQL
+    (err, result) => {
+      if (err) throw err;
+      res.status(201).json({ id: result.insertId, nom, email, telephone }); // Réponse avec le nouvel ID et les données
+    }
+  );
+});
+```
+- **`POST /api/utilisateurs`** : Ce point d'API permet d'ajouter un nouvel utilisateur à la base de données.
+  - Les données envoyées par le client (nom, email, téléphone) sont extraites du corps de la requête.
+  - Si un des champs est manquant, une réponse d'erreur 400 est renvoyée.
+  - Si les données sont valides, elles sont insérées dans la base de données avec une requête `INSERT INTO`.
+  - Une réponse avec le statut 201 et les données de l'utilisateur ajouté (y compris l'ID généré par MySQL) est renvoyée.
+
+#### **7. Démarrage du serveur**
+```javascript
+app.listen(port, () => {
+  console.log(`Serveur backend opérationnel : http://172.16.192.254:${port}`);
+});
+```
+- Cette ligne démarre le serveur sur le port 3000, et affiche un message dans la console indiquant l'adresse à laquelle le serveur est disponible.
+
+---
 
 - **Configuration de la base de données** :
   - Création de la base `gestion_utilisateurs`.
