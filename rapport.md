@@ -67,7 +67,7 @@ app.get('/api/utilisateurs', (req, res) => {
   });
 });
 ```
-- **`GET /api/utilisateurs`** : Ce point d'API récupère tous les utilisateurs de la base de données en exécutant une requête SQL `SELECT * FROM users`. 
+- **`GET /api/utilisateurs`** : Cette route récupère tous les utilisateurs de la base de données en exécutant une requête SQL `SELECT * FROM users`. 
 - Les résultats sont renvoyés sous forme de JSON au client (dans ce cas, l'application Flutter).
 
 #### **6. Endpoint POST pour ajouter un utilisateur**
@@ -91,7 +91,7 @@ app.post('/api/utilisateurs', (req, res) => {
   );
 });
 ```
-- **`POST /api/utilisateurs`** : Ce point d'API permet d'ajouter un nouvel utilisateur à la base de données.
+- **`POST /api/utilisateurs`** :  Cette route permet d'ajouter un nouvel utilisateur à la base de données.
   - Les données envoyées par le client (nom, email, téléphone) sont extraites du corps de la requête.
   - Si un des champs est manquant, une réponse d'erreur 400 est renvoyée.
   - Si les données sont valides, elles sont insérées dans la base de données avec une requête `INSERT INTO`.
