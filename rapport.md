@@ -229,6 +229,6 @@ app.listen(port, () => {
 
 ---
 
-#### **Conclusion**
+## **Conclusion**
 
 Ce projet a permis de développer une application mobile Flutter intégrée à un backend Node.js, avec une base de données MySQL distante. L'application permet de gérer les utilisateurs en les récupérant et en les ajoutant via des API REST. L'application est facilement extensible pour inclure des fonctionnalités supplémentaires telles que la modification, la suppression d'utilisateurs, ou l'ajout de nouvelles fonctionnalités. Ce projet démontre l'intégration entre une application mobile Flutter, un backend Node.js, et une base de données distante, tout en assurant une communication sécurisée via CORS et des requêtes HTTP.
