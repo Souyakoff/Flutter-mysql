@@ -3,7 +3,7 @@
 #### **Objectifs du TP**
 1. Configurer un backend avec Node.js pour interagir avec une base de données MySQL situé sur une machine "distante" (VM).
 2. Développer une application Flutter intégrée à ce backend via une API REST.
-3. Afficher et manipuler dynamiquement des données (utilisateurs) dans l'application flutter.
+3. Afficher et ajouter des données (utilisateurs) dans l'application flutter.
 
 ---
 
