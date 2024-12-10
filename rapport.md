@@ -1,4 +1,4 @@
-### Rapport : Application Flutter avec connexion a une Base de Données MySQL distante
+### Rapport : Application Flutter avec connexion a une Base de Données MySQL (Distante)
 
 #### **Objectifs du TP**
 1. Configurer un backend avec Node.js pour interagir avec une base de données MySQL situé sur une machine "distante" (VM).
