@@ -34,7 +34,7 @@ const port = 3000; // Port d'écoute du serveur
 ```javascript
 app.use(cors());  // Activer CORS pour toutes les routes
 ```
-- Cette ligne permet à l'API de répondre aux requêtes provenant de domaines différents de celui du backend (par exemple, Flutter, hébergé sur un autre domaine).
+- Cette ligne permet à l'API de répondre aux requêtes provenant de domaines différents de celui du backend (par exemple, Flutter, hébergé sur une autre machine).
 
 #### **3. Connexion à la base de données MySQL**
 ```javascript
