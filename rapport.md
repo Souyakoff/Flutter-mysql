@@ -120,7 +120,7 @@ Voici une version améliorée et plus détaillée du schéma d'architecture pour
 +----------------------------+              +-----------------------+
              |                                    |
              |                                    | Connexion à la base
-             |                                    | (Requêtes SQL)
+             |                                    | 
              v                                    v
 +----------------------------+              +-----------------------+
 |                            |              |                       |
