@@ -9,7 +9,7 @@
 
 #### **Étapes Réalisées**
 
-##### **1. Backend avec Node.js et MySQL**
+##**1. Backend avec Node.js et MySQL**
 - **Création de l’API REST** :
   - Endpoint GET : Récupère la liste des utilisateurs avec leurs informations (nom, email, téléphone).
   - Endpoint POST : Permet d’ajouter un utilisateur (nom, email, téléphone).
@@ -18,7 +18,7 @@
 
 ### **Fichier `server.js`**
 
-#### **1. Importation des modules nécessaires**
+#### **Importation des modules nécessaires**
 ```javascript
 const express = require('express');
 const mysql = require('mysql');
@@ -30,7 +30,7 @@ const port = 3000; // Port d'écoute du serveur
 - **`mysql`** : Module pour se connecter à une base de données MySQL.
 - **`cors`** : permet les requêtes HTTP cross-origin (utilisé pour éviter les erreurs CORS lorsqu'on communique entre le frontend Flutter et le backend Node.js).
 
-#### **2. Configuration de CORS**
+#### **Configuration de CORS**
 ```javascript
 app.use(cors());  // Activer CORS pour toutes les routes
 ```
