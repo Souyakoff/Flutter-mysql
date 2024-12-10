@@ -139,7 +139,7 @@ app.listen(port, () => {
 
 ---
 
-##### **2. Application Flutter**
+## **2. Application Flutter**
 
 - **Fichier `api_service.dart`** : Communication avec le backend.
   - **Récupération des utilisateurs** :
