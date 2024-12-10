@@ -28,7 +28,7 @@ const port = 3000; // Port d'écoute du serveur
 ```
 - **`express`** : Framework Node.js pour créer des applications web et des API.
 - **`mysql`** : Module pour se connecter à une base de données MySQL.
-- **`cors`** : Middleware pour permettre les requêtes HTTP cross-origin (utilisé pour éviter les erreurs CORS lorsqu'on communique entre le frontend Flutter et le backend Node.js).
+- **`cors`** : permet les requêtes HTTP cross-origin (utilisé pour éviter les erreurs CORS lorsqu'on communique entre le frontend Flutter et le backend Node.js).
 
 #### **2. Configuration de CORS**
 ```javascript
