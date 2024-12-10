@@ -157,16 +157,5 @@ Voici une version améliorée et plus détaillée du schéma d'architecture pour
 
 ---
 
-#### **Évaluation**
-- **Fonctionnalité des endpoints** : Les endpoints GET et POST fonctionnent parfaitement.
-- **Interface utilisateur** :
-  - Liste des utilisateurs affichée dynamiquement.
-  - Formulaire simple et fonctionnel.
-- **Gestion des erreurs** :
-  - Messages d’erreur affichés pour les cas de requêtes incorrectes.
-- **Rapport** : Documentation complète avec le code source et les étapes suivies.
-
----
-
 #### **Conclusion**
 Ce projet a permis de créer une application mobile Flutter connectée à un backend Node.js et une base de données MySQL. L'application est extensible et peut intégrer d'autres fonctionnalités comme la modification ou la suppression d'utilisateurs.
