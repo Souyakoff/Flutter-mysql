@@ -137,6 +137,7 @@ Voici une version améliorée et plus détaillée du schéma d'architecture pour
   - Liste des utilisateurs récupérée depuis le backend.
   - Mise à jour de la liste après l’ajout d’un nouvel utilisateur.
 - **Ajout d’un utilisateur** :
+  
 ![Alt text](image-1.PNG)
   - Utilisation d’un formulaire pour saisir les informations nécessaires.
   - Données envoyées au backend et ajoutées dans la base MySQL.
