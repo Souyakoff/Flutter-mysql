@@ -9,7 +9,7 @@
 
 #### **Étapes Réalisées**
 
-##**1. Backend avec Node.js et MySQL**
+###**1. Backend avec Node.js et MySQL**
 - **Création de l’API REST** :
   - Endpoint GET : Récupère la liste des utilisateurs avec leurs informations (nom, email, téléphone).
   - Endpoint POST : Permet d’ajouter un utilisateur (nom, email, téléphone).
